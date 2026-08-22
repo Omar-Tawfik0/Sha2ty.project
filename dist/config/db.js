@@ -5,6 +5,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.connectDB = void 0;
 const mongoose_1 = __importDefault(require("mongoose"));
+const crypto_1 = __importDefault(require("crypto"));
+if (!globalThis.crypto) {
+    // @ts-ignore
+    globalThis.crypto = crypto_1.default;
+}
 const connectDB = async () => {
     try {
         const conn = await mongoose_1.default.connect(process.env.MONGO_URI || "mongodb://localhost:27017/sha2ty");
