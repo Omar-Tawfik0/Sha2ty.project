@@ -28,6 +28,26 @@ const swaggerOptions: swaggerJSDoc.Options = {
       },
 
       schemas: {
+        // المخططات المفقودة لحل مشكلة Register و Auth
+        RegisterRequest: {
+          type: "object",
+          required: ["fullName", "email", "password", "role"],
+          properties: {
+            fullName: { type: "string", example: "Omar Tawfik" },
+            email: { type: "string", format: "email", example: "user@example.com" },
+            password: { type: "string", example: "12345678" },
+            role: { type: "string", enum: ["Lister", "Seeker"], example: "Seeker" },
+          },
+        },
+
+        AuthResponse: {
+          type: "object",
+          properties: {
+            token: { type: "string" },
+            user: { $ref: "#/components/schemas/User" },
+          },
+        },
+
         User: {
           type: "object",
           properties: {
@@ -110,5 +130,4 @@ const swaggerOptions: swaggerJSDoc.Options = {
   ],
 };
 
-export const swaggerSpec =
-  swaggerJSDoc(swaggerOptions);
+export const swaggerSpec = swaggerJSDoc(swaggerOptions);
