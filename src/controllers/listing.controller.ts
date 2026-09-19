@@ -59,6 +59,8 @@ export const getListings = async (req: AuthRequest, res: Response) => {
   }
 };
 
+// crud operations for listings
+
 export const createListing = async (req: AuthRequest, res: Response) => {
   try {
     const userId = req.user?.id;

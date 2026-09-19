@@ -50,6 +50,7 @@ const getListings = async (req, res) => {
     }
 };
 exports.getListings = getListings;
+// crud operations for listings
 const createListing = async (req, res) => {
     try {
         const userId = req.user?.id;

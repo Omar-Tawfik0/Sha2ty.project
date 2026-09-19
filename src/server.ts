@@ -1,4 +1,6 @@
 import app from "./app";
+import dns from 'dns';
+dns.setServers(['8.8.8.8', '8.8.4.4']);
 import { connectDB } from "./config/db";
 import dotenv from "dotenv";
 
