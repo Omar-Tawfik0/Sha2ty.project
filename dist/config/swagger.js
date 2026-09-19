@@ -13,7 +13,12 @@ const swaggerOptions = {
             version: "1.0.0",
             description: "Student Housing Finder API for finding and sharing student accommodation.",
         },
+        // 👈 التعديل هنا في قسم servers
         servers: [
+            {
+                url: "/",
+                description: "Current environment (Railway / Production)",
+            },
             {
                 url: "http://localhost:5000",
                 description: "Local development server",
@@ -28,6 +33,23 @@ const swaggerOptions = {
                 },
             },
             schemas: {
+                RegisterRequest: {
+                    type: "object",
+                    required: ["fullName", "email", "password", "role"],
+                    properties: {
+                        fullName: { type: "string", example: "Omar Tawfik" },
+                        email: { type: "string", format: "email", example: "user@example.com" },
+                        password: { type: "string", example: "12345678" },
+                        role: { type: "string", enum: ["Lister", "Seeker"], example: "Seeker" },
+                    },
+                },
+                AuthResponse: {
+                    type: "object",
+                    properties: {
+                        token: { type: "string" },
+                        user: { $ref: "#/components/schemas/User" },
+                    },
+                },
                 User: {
                     type: "object",
                     properties: {

@@ -4,6 +4,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const app_1 = __importDefault(require("./app"));
+const dns_1 = __importDefault(require("dns"));
+dns_1.default.setServers(['8.8.8.8', '8.8.4.4']);
 const db_1 = require("./config/db");
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
