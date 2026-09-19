@@ -6,6 +6,7 @@ import swaggerUi from "swagger-ui-express";
 import { swaggerSpec } from "./config/swagger";
 
 import authRoutes from "./routes/auth.routes";
+import listingRoutes from "./routes/listing.routes";
 
 dotenv.config();
 
@@ -13,7 +14,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: ["http://localhost:3000"], // ضيف هنا أي دومين هترفع الفرونت اند عليه بعدين
+    origin: [/^http:\/\/localhost:\d+$/],
     credentials: true,
   })
 );
@@ -27,6 +28,6 @@ app.use(
 );
 
 app.use("/api/auth", authRoutes);
+app.use("/api/listings", listingRoutes);
 
 export default app;
-//install cors npm install --save-dev @types/cors
