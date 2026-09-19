@@ -11,7 +11,12 @@ const swaggerOptions: swaggerJSDoc.Options = {
         "Student Housing Finder API for finding and sharing student accommodation.",
     },
 
+    // 👈 التعديل هنا في قسم servers
     servers: [
+      {
+        url: "/",
+        description: "Current environment (Railway / Production)",
+      },
       {
         url: "http://localhost:5000",
         description: "Local development server",
@@ -28,7 +33,6 @@ const swaggerOptions: swaggerJSDoc.Options = {
       },
 
       schemas: {
-        // المخططات المفقودة لحل مشكلة Register و Auth
         RegisterRequest: {
           type: "object",
           required: ["fullName", "email", "password", "role"],
