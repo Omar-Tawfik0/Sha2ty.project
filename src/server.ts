@@ -1,10 +1,14 @@
 import app from "./app";
 import dns from 'dns';
-dns.setServers(['8.8.8.8', '8.8.4.4']);
 import { connectDB } from "./config/db";
 import dotenv from "dotenv";
 
 dotenv.config();
+
+
+if (process.env.NODE_ENV !== "production") {
+  dns.setServers(['8.8.8.8', '8.8.4.4']);
+}
 
 const PORT = process.env.PORT || 5000;
 
@@ -17,4 +21,5 @@ connectDB()
   })
   .catch((err: unknown) => {
     console.error("❌ Failed to connect to DB:", err);
+    process.exit(1); 
   });
