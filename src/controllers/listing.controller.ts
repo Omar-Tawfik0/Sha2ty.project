@@ -67,7 +67,7 @@ export const createListing = async (req: AuthRequest, res: Response) => {
 
     const listing = await Listing.create({
       ...req.body,
-      owner: userId,
+      user: userId,
     });
 
     return res.status(201).json({
